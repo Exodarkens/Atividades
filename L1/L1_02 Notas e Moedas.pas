@@ -1,66 +1,25 @@
 Program Pzim ;
 var
-notas100,notas50,notas20,notas10,notas5,notas2,dinheiro: integer;
-moeda1,moeda050,moeda025,moeda010,moeda05,moeda01:real;
+dinheiro: real;
+moedas, notas: integer;
 Begin
   readln(dinheiro);
-  
-while(dinheiro<>0) do  
-  if (dinheiro div 100 <> 0) and (dinheiro div 100 > 0) then
-  begin
-    notas100 := notas100 + (dinheiro div 100);
-    dinheiro := dinheiro mod 100 ;    
-    writeln(dinheiro);
-  end
-  else
-	  if (dinheiro div 50 <> 0) and (dinheiro div 50 > 0) then
-	  begin
-	    notas50 := notas50 +(dinheiro div 50);
-	    dinheiro := dinheiro mod 50;
-	    
-	  end
-	  else
-		  if (dinheiro div 20 <> 0) and (dinheiro div 20 > 0) then
-		  begin
-		    notas20 := notas20 + (dinheiro div 20);
-		    dinheiro := dinheiro mod 20;
-		    
-		  end
-		  else
-		  
-			  if (dinheiro div 20 <> 0) and (dinheiro div 20 > 0) then
-			  begin
-			    notas10 := notas10 + (dinheiro div 10);
-			    dinheiro := dinheiro mod 10;
-			  end
-			  else
-			  
-				  if (dinheiro div 20 <> 0) and (dinheiro div 20 > 0) then
-				  begin
-				    notas5 := notas5 + (dinheiro div 5);
-				    dinheiro := dinheiro mod 5;
-				  end
-				  else
-					  if (dinheiro div 20 <> 0) and (dinheiro div 20 > 0) then
-					  begin
-					    notas2 := notas + 2(dinheiro div 2);
-					    dinheiro := dinheiro mod 2;
-					  end;
-  
   writeln('NOTAS:');
-  writeln(notas100,' nota(s) de R$ 100.00');
-  writeln(notas50, ' nota(s) de R$ 50.00');
-  writeln(notas20, ' nota(s) de R$ 20.00');
-  writeln(notas10, ' nota(s) de R$ 10.00');
-  writeln(notas5,  ' nota(s) de R$ 5.00');
-  writeln(notas2,  ' nota(s) de R$ 2.00');
+  notas := trunc(dinheiro);
+  writeln(notas div 100,' nota(s) de R$ 100.00');
+  writeln((notas mod 100)div 50, ' nota(s) de R$ 50.00');
+  writeln((notas mod 50)div 20, ' nota(s) de R$ 20.00');
+  writeln(((notas mod 50)mod 20) div 10, ' nota(s) de R$ 10.00');
+  writeln((notas mod 10)div 5,  ' nota(s) de R$ 5.00');
+  writeln((notas mod 5)div 2,  ' nota(s) de R$ 2.00');
   
-  writeln('MOEDAS:')
-  writeln(moeda1,' moeda(s) de R$ 1.00');
-  writeln(moeda050,' moeda(s) de R$ 0.50');
-  writeln(moeda025,' moeda(s) de R$ 0.25');
-  writeln(moeda010,' moeda(s) de R$ 0.10');
-  writeln(moeda05, 'moeda(s) de R$ 0.05');
-  writeln(moeda01, 'moeda(s) de R$ 0.01');
+  writeln('MOEDAS:'); 
+  writeln(((notas mod 5)mod 2),' moeda(s) de R$ 1.00');
+  moedas := trunc(frac(dinheiro)*100);
+  writeln((moedas div 50),' moeda(s) de R$ 0.50');
+  writeln((moedas mod 50)div 25,' moeda(s) de R$ 0.25');
+  writeln(((moedas mod 25)div 10),' moeda(s) de R$ 0.10');
+  writeln(((moedas mod 25)mod 10)div 5, ' moeda(s) de R$ 0.05');
+  writeln((moedas mod 5), ' moeda(s) de R$ 0.01');
   
 End.
